@@ -14,33 +14,41 @@ html {
 
 body {
   font-family: 'Montserrat', sans-serif;
-  background: #000;
-  color: #fff;
+  background: #F8F6F1;
+  color: #0A0A0A;
   overflow-x: hidden;
+  cursor: none;
+}
+
+/* Hide default cursor on desktop */
+@media (min-width: 768px) {
+  * {
+    cursor: none !important;
+  }
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 3px;
+  width: 4px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #000;
+  background: #F8F6F1;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(201, 169, 97, 0.3);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(201, 169, 97, 0.5);
 }
 
 /* Selection color */
 ::selection {
-  background: rgba(255, 255, 255, 0.15);
-  color: #fff;
+  background: rgba(201, 169, 97, 0.2);
+  color: #0A0A0A;
 }
 
 /* Smooth transitions for all interactive elements */
@@ -52,4 +60,12 @@ a, button {
 canvas {
   display: block;
   touch-action: none;
+}
+
+/* Gold gradient text utility */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #C9A961 0%, #D4AF37 50%, #B8860B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }

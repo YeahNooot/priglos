@@ -40,20 +40,26 @@ function TimeBlock({ value, label, delay = 0 }: { value: number; label: string; 
         {/* Glow effect on hover */}
         <div className="absolute -inset-4 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 rounded-lg"
           style={{
-            background: 'radial-gradient(circle at center, rgba(255,255,255,0.03) 0%, transparent 70%)',
+            background: 'radial-gradient(circle at center, rgba(201, 169, 97, 0.1) 0%, transparent 70%)',
           }}
         />
 
-        <div className="w-20 h-28 md:w-28 md:h-36 border border-white/[0.08] flex items-center justify-center relative overflow-hidden backdrop-blur-sm"
+        <div className="w-20 h-28 md:w-28 md:h-36 flex items-center justify-center relative overflow-hidden"
           style={{
-            background: 'linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.005) 100%)',
+            background: 'linear-gradient(180deg, rgba(201, 169, 97, 0.05) 0%, rgba(201, 169, 97, 0.02) 100%)',
+            border: '1px solid rgba(201, 169, 97, 0.2)',
+            borderRadius: '4px',
           }}
         >
           {/* Top shine */}
-          <div className="absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b from-white/[0.03] to-transparent" />
+          <div className="absolute top-0 left-0 right-0 h-1/2"
+            style={{ background: 'linear-gradient(180deg, rgba(201, 169, 97, 0.08) 0%, transparent 100%)' }}
+          />
 
           {/* Center divider line */}
-          <div className="absolute left-0 right-0 top-1/2 h-[1px] bg-white/[0.05]" />
+          <div className="absolute left-0 right-0 top-1/2 h-[1px]"
+            style={{ background: 'rgba(201, 169, 97, 0.15)' }}
+          />
 
           {/* Number */}
           <motion.span
@@ -61,22 +67,22 @@ function TimeBlock({ value, label, delay = 0 }: { value: number; label: string; 
             initial={{ opacity: 0.5, y: -5 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className="text-4xl md:text-6xl font-light text-white/90 relative z-10"
-            style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300 }}
+            className="text-4xl md:text-6xl font-light relative z-10"
+            style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: '#0A0A0A' }}
           >
             {String(value).padStart(2, '0')}
           </motion.span>
 
           {/* Corner accents */}
-          <div className="absolute top-2 left-2 w-2 h-2 border-t border-l border-white/10" />
-          <div className="absolute top-2 right-2 w-2 h-2 border-t border-r border-white/10" />
-          <div className="absolute bottom-2 left-2 w-2 h-2 border-b border-l border-white/10" />
-          <div className="absolute bottom-2 right-2 w-2 h-2 border-b border-r border-white/10" />
+          <div className="absolute top-2 left-2 w-2 h-2" style={{ borderTop: '1px solid rgba(201, 169, 97, 0.3)', borderLeft: '1px solid rgba(201, 169, 97, 0.3)' }} />
+          <div className="absolute top-2 right-2 w-2 h-2" style={{ borderTop: '1px solid rgba(201, 169, 97, 0.3)', borderRight: '1px solid rgba(201, 169, 97, 0.3)' }} />
+          <div className="absolute bottom-2 left-2 w-2 h-2" style={{ borderBottom: '1px solid rgba(201, 169, 97, 0.3)', borderLeft: '1px solid rgba(201, 169, 97, 0.3)' }} />
+          <div className="absolute bottom-2 right-2 w-2 h-2" style={{ borderBottom: '1px solid rgba(201, 169, 97, 0.3)', borderRight: '1px solid rgba(201, 169, 97, 0.3)' }} />
         </div>
       </div>
 
-      <p className="text-white/25 text-[9px] tracking-[0.4em] uppercase mt-5"
-        style={{ fontFamily: "'Montserrat', sans-serif" }}
+      <p className="text-[9px] tracking-[0.5em] uppercase mt-5"
+        style={{ color: '#C9A961', fontFamily: "'Montserrat', sans-serif" }}
       >
         {label}
       </p>
@@ -100,34 +106,34 @@ export default function Countdown({ targetDate }: CountdownProps) {
       <TimeBlock value={timeLeft.days} label="Дней" delay={0.2} />
 
       <motion.div
-        animate={{ opacity: [0.15, 0.5, 0.15] }}
+        animate={{ opacity: [0.3, 0.8, 0.3] }}
         transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
         className="flex flex-col gap-3 mt-[-20px]"
       >
-        <div className="w-1.5 h-1.5 bg-white/30 rounded-full" />
-        <div className="w-1.5 h-1.5 bg-white/30 rounded-full" />
+        <div className="w-1.5 h-1.5 rounded-full" style={{ background: '#C9A961' }} />
+        <div className="w-1.5 h-1.5 rounded-full" style={{ background: '#C9A961' }} />
       </motion.div>
 
       <TimeBlock value={timeLeft.hours} label="Часов" delay={0.4} />
 
       <motion.div
-        animate={{ opacity: [0.15, 0.5, 0.15] }}
+        animate={{ opacity: [0.3, 0.8, 0.3] }}
         transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
         className="flex flex-col gap-3 mt-[-20px]"
       >
-        <div className="w-1.5 h-1.5 bg-white/30 rounded-full" />
-        <div className="w-1.5 h-1.5 bg-white/30 rounded-full" />
+        <div className="w-1.5 h-1.5 rounded-full" style={{ background: '#C9A961' }} />
+        <div className="w-1.5 h-1.5 rounded-full" style={{ background: '#C9A961' }} />
       </motion.div>
 
       <TimeBlock value={timeLeft.minutes} label="Минут" delay={0.6} />
 
       <motion.div
-        animate={{ opacity: [0.15, 0.5, 0.15] }}
+        animate={{ opacity: [0.3, 0.8, 0.3] }}
         transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
         className="flex flex-col gap-3 mt-[-20px]"
       >
-        <div className="w-1.5 h-1.5 bg-white/30 rounded-full" />
-        <div className="w-1.5 h-1.5 bg-white/30 rounded-full" />
+        <div className="w-1.5 h-1.5 rounded-full" style={{ background: '#C9A961' }} />
+        <div className="w-1.5 h-1.5 rounded-full" style={{ background: '#C9A961' }} />
       </motion.div>
 
       <TimeBlock value={timeLeft.seconds} label="Секунд" delay={0.8} />
